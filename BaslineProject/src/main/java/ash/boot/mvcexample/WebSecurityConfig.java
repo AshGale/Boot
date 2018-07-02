@@ -18,15 +18,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
                 .antMatchers("/", "/home").permitAll()
-                .antMatchers("/greet", "/greet").permitAll()
-                .antMatchers("/ajax", "/ajaxIndex").permitAll()
+                .antMatchers("/greet").permitAll()
+                .antMatchers("/ajax", "/ajaxIndex" , "/knockknock").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
                 .loginPage("/login").permitAll()
                 .and()
             .logout().permitAll();
-        
+        http
+    	.csrf().disable();
     }
 
     @Bean
