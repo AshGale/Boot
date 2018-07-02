@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CSRF Protected JavaScript Page</title>
+		<meta name="description" content="This is the description for this page" />
+		<sec:csrfMetaTags />
+		<script type="text/javascript" language="javascript">
+
+			var csrfParameter = $("meta[name='_csrf_parameter']").attr("content");
+			var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+			var csrfToken = $("meta[name='_csrf']").attr("content");
+
+			// using JQuery to send an x-www-form-urlencoded request
+			var data = {};
+			var headers = {};
+			
+			data[csrfParameter] = csrfToken;
+			data["name"] = "John";//data: data,
+			
+			headers[csrfHeader] = csrfToken;
+			
+			$.ajax({
+				url: "http://localhost:8080/knockknock",
+				type: "GET",
+				
+				headers: headers
+			});
+
+		<script>
+	</head>
+	<body>
+		<p th:text="'Hello!'" />
+	</body>
+</html>

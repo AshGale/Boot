@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p>
+	Get your greeting <a href="/greet">here</a><br>
+	Test ajax call: <a href="/ajax">here</a><br>
+	SecurityHome: <a href="/securityHome">here</a><br>
+	<span th:text="'Today is: ' + ${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}"></span>
+	</p>
+</body>
+</html>
